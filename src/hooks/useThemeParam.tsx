@@ -25,72 +25,32 @@ export const useThemeParam = () => {
   const [themeSource, setThemeSource] = useState<ThemeSourceType>('Loading...');
   const { toast } = useToast();
   
-  // Function to load theme from URL
+  // Function to load theme from URL (DISABLED - always loads default)
   const loadThemeFromURL = () => {
-    // Detect theme from URL and apply it
-    const detectedTheme = detectAndApplyTheme();
+    // Always use default theme
+    const detectedTheme = 'default';
     setTheme(detectedTheme);
     
-    // Apply theme classes
+    // Apply theme classes (though this won't do much for default)
     applyThemeClasses(detectedTheme, predefinedThemes);
     
-    // Set theme source based on whether it's a predefined theme or custom
-    if (detectedTheme === 'default' || predefinedThemes.includes(detectedTheme)) {
-      setThemeSource('Standard Template');
-    } else {
-      setThemeSource('AI Customised');
-    }
+    // Always use standard template for default theme
+    setThemeSource('Standard Template');
     
     setIsLoading(false);
     
-    // If not a default theme, show a toast
-    if (detectedTheme !== 'default') {
-      toast({
-        title: "Themed Content",
-        description: `Viewing content tailored for ${detectedTheme} professionals`,
-        duration: 3000,
-      });
-    }
+    console.log("Theme system disabled, using default theme only");
   };
   
   useEffect(() => {
-    // Initial load
+    // Initial load only - no URL listening
     loadThemeFromURL();
-    
-    // Listen for URL changes (history navigation)
-    const handleURLChange = () => {
-      loadThemeFromURL();
-    };
-    
-    // Add event listener for popstate (back/forward navigation)
-    window.addEventListener('popstate', handleURLChange);
-    
-    return () => {
-      window.removeEventListener('popstate', handleURLChange);
-    };
   }, []);
   
-  // Function to change the theme programmatically
+  // Function to change the theme programmatically (DISABLED)
   const changeTheme = (newTheme: ProfessionalTheme) => {
-    console.log(`Changing theme from ${theme} to ${newTheme}`);
-    setTheme(newTheme);
-    applyThemeClasses(newTheme, predefinedThemes);
-    updateThemeInURL(newTheme);
-    
-    // Update theme source
-    if (newTheme === 'default' || predefinedThemes.includes(newTheme)) {
-      setThemeSource('Standard Template');
-    } else {
-      setThemeSource('AI Customised');
-    }
-    
-    if (newTheme !== 'default' && newTheme !== theme) {
-      toast({
-        title: "Themed Content",
-        description: `Viewing content tailored for ${newTheme} professionals`,
-        duration: 3000,
-      });
-    }
+    console.log(`Theme changing disabled, ignoring request to change to: ${newTheme}`);
+    // Do nothing - theme changes are disabled
   };
   
   return { 
