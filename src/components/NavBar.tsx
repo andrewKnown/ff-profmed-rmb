@@ -37,7 +37,7 @@ const NavBar = () => {
             <img 
               src="/lovable-uploads/0f902728-6739-4e20-8857-e92b3e4712dc.png" 
               alt="RMB Logo" 
-              className="h-14 w-auto" 
+              className="w-[200px] h-auto" 
             />
           </Link>
         </div>
