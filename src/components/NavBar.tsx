@@ -31,10 +31,14 @@ const NavBar = () => {
   return (
     <nav className="bg-white border-b border-gray-100 py-4 px-4 md:px-8 sticky top-0 z-50 h-[150px]">
       <div className="max-w-[1152px] mx-auto flex items-center justify-between h-full">
-        {/* Logo - Social Post Style */}
+        {/* Logo - PROFMED Logo Image */}
         <div>
           <Link to="/" className="flex items-center space-x-2">
-            <div className="brand-header text-2xl">PROFMED</div>
+            <img 
+              src="/lovable-uploads/da9196e2-00f5-41df-8da0-41ad5c159164.png" 
+              alt="PROFMED Logo" 
+              className="h-8 w-auto" 
+            />
           </Link>
         </div>
 
