@@ -30,7 +30,7 @@ const NavBar = () => {
 
   return (
     <nav className="bg-background shadow-md py-3 px-4 md:px-8 sticky top-0 z-50">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between">
+      <div className="max-w-[1152px] mx-auto flex items-center justify-between">
         {/* Logo - updated to h-14 */}
         <div>
           <Link to="/" className="flex items-center space-x-2">
