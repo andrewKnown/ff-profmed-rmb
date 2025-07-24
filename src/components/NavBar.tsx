@@ -71,9 +71,16 @@ const NavBar = () => {
               onClick={() => scrollToSection('plans-overview')} 
               className="text-foreground hover:text-accent transition-colors text-left font-medium"
             >
-              Plans
+              Dual Benefits
             </button>
             
+            <button 
+              onClick={() => scrollToSection('eligibility')} 
+              className="text-foreground hover:text-accent transition-colors text-left font-medium"
+            >
+              Eligibility
+            </button>
+
             <button 
               onClick={() => scrollToSection('reviews')} 
               className="text-foreground hover:text-accent transition-colors text-left font-medium"
@@ -85,7 +92,7 @@ const NavBar = () => {
               onClick={() => scrollToSection('trust-section')} 
               className="text-foreground hover:text-accent transition-colors text-left font-medium"
             >
-              Why Choose Us
+              Apply Now
             </button>
 
             {/* Only show the Admin link on admin pages */}
