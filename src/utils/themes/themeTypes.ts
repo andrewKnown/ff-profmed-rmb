@@ -7,9 +7,9 @@ export const predefinedThemes = ['default', 'architects', 'accountants', 'pps', 
 // Default content mappings for predefined themes
 export const defaultThemeContent = {
   default: {
-    title: "Discover Professional Medical Aid Tailored to You",
-    subtitle: "Chat with our AI Assistant to find out if you qualify in less than 2 minutes",
-    cta: "Find the Right Medical Plan for You",
+    title: "FREEDOM TO LIVE YOUR PASSION",
+    subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
+    cta: "Begin Your Healthcare Journey Today",
     headerImage: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=2000&ixlib=rb-4.0.3',
   },
   architects: {
