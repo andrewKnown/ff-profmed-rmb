@@ -7,9 +7,9 @@ export const predefinedThemes = ['default', 'architects', 'accountants', 'pps', 
 // Default content mappings for predefined themes
 export const defaultThemeContent = {
   default: {
-    title: "FREEDOM TO LIVE YOUR PASSION",
-    subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
-    cta: "Begin Your Healthcare Journey Today",
+    title: "You dream it. We'll help you achieve it.",
+    subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
+    cta: "Apply now",
     headerImage: 'https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?auto=format&fit=crop&q=80&w=2000&ixlib=rb-4.0.3',
   },
   architects: {

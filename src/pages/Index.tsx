@@ -19,9 +19,9 @@ const Index = () => {
     cta: string;
     headerImage: string;
   }>({
-    title: "FREEDOM TO LIVE YOUR PASSION",
-    subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
-    cta: "Begin Your Healthcare Journey Today",
+    title: "You dream it. We'll help you achieve it.",
+    subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
+    cta: "Apply now",
     headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -32,9 +32,9 @@ const Index = () => {
       try {
         // Get initial content synchronously for faster rendering
         const placeholderContent = {
-          title: "FREEDOM TO LIVE YOUR PASSION",
-          subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
-          cta: "Begin Your Healthcare Journey Today",
+          title: "You dream it. We'll help you achieve it.",
+          subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
+          cta: "Apply now",
           headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
         };
         setContent(placeholderContent);
@@ -121,6 +121,164 @@ const Index = () => {
           </div>
         </div>
       </header>
+
+      {/* Section 1: Value Proposition */}
+      <section className="py-16 px-4 md:px-8 bg-background">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Profmed + RMB Credit Card. Everything that matters.
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+            You already know who you are, what you want, and how you're going to get there. You just need the right support at the right time. Designed for early-career professionals who want support, not red tape.
+          </p>
+          <p className="text-base md:text-lg text-muted-foreground">
+            That's why Profmed and RMB Private Bank have partnered to offer a dual benefit that covers more than costs. This offering backs your ambition with real benefits, from upfront medical cover to credit support designed for professionals with purpose.
+          </p>
+        </div>
+      </section>
+
+      {/* Section 2: Product Overview */}
+      <section className="py-16 px-4 md:px-8 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+              Two essentials. Dual-benefit solution.
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-4xl mx-auto">
+              The Profmed medical aid + RMB Credit Card is a dual benefit offer that combines intelligent medical cover with a smart credit card offering designed for early-career professionals who are already moving fast and want tools that help them move smarter.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Medical Benefits */}
+            <div className="bg-background p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold mb-4 text-primary">Built-in medical benefits</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>• ProSelect Savvy benefit for young professionals</li>
+                <li>• R2,500 medical savings contribution</li>
+                <li>• Preventative screenings and mental health support via the Profmed App</li>
+                <li>• 150+ days of sabbatical cover</li>
+              </ul>
+            </div>
+            
+            {/* Credit Benefits */}
+            <div className="bg-background p-6 rounded-lg shadow-md">
+              <h3 className="text-2xl font-bold mb-4 text-primary">Exceptional credit support</h3>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>• Guaranteed R10k credit limit (with potential increases)</li>
+                <li>• Zero underwriting fees + free metal card</li>
+                <li>• Personalised interest rates + Prime+2% budget facility</li>
+                <li>• Purchase and debt protection (up to R15,000 and R12,000)</li>
+                <li>• Travel insurance up to R5 million</li>
+                <li>• Preferential lending rates on vehicle and home finance</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Lifestyle Rewards */}
+          <div className="bg-background p-6 rounded-lg shadow-md">
+            <h3 className="text-2xl font-bold mb-4 text-primary">Intelligent lifestyle rewards</h3>
+            <ul className="grid md:grid-cols-2 gap-2 text-muted-foreground">
+              <li>• Auto-upgrade to eBucks Level 3 + earn up to eB9000/month</li>
+              <li>• R1.60/l fuel cashback + tech and lifestyle rewards</li>
+              <li>• 8 complimentary SLOW Lounge visits</li>
+              <li>• 15–25% back on Netflix, Spotify, iStore, Hirsch's, and more</li>
+            </ul>
+            <p className="text-sm text-muted-foreground mt-4 italic">Spend smart, get rewarded - no extra effort needed</p>
+          </div>
+          
+          <div className="text-center mt-8">
+            <p className="text-lg text-muted-foreground mb-6">
+              Are you ready to design the life you want without restrictions and complexities?
+            </p>
+            <a 
+              href="https://profmed.co.za/rmb" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Apply now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 3: Eligibility */}
+      <section className="py-16 px-4 md:px-8 bg-background">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+            Do I qualify?
+          </h2>
+          <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            This is a professional tool built for people who are already doing the hard work of building something better.
+          </p>
+          
+          <div className="bg-muted/30 p-6 rounded-lg mb-8">
+            <h3 className="text-xl font-bold mb-4 text-foreground">Eligibility Requirements</h3>
+            <ul className="text-left text-muted-foreground space-y-2 max-w-2xl mx-auto">
+              <li>• Ages 22–30</li>
+              <li>• Degree required</li>
+              <li>• Must meet both RMB Private Bank's young professional account and Profmed membership criteria</li>
+            </ul>
+          </div>
+          
+          <div className="mb-8">
+            <h3 className="text-xl font-bold mb-4 text-foreground">Typical qualifying professions include:</h3>
+            <p className="text-muted-foreground">
+              Law, medicine, engineering, finance, architecture, sciences, and more
+            </p>
+          </div>
+          
+          <a 
+            href="https://profmed.co.za/rmb" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+          >
+            Apply now
+          </a>
+        </div>
+      </section>
+
+      {/* Section 4: Lived Benefit Framing */}
+      <section className="py-16 px-4 md:px-8 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
+              Your tools should work as hard as you do.
+            </h2>
+            <p className="text-xl text-muted-foreground mb-8">
+              Cover your health. Grow your wealth.
+            </p>
+            <p className="text-lg text-muted-foreground">
+              Real benefits, no fluff, just smart support for your next step.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <div className="text-center">
+              <div className="bg-primary/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-2xl">🏥</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Healthcare? Handled.</h3>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-primary/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-2xl">💳</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Money? Sorted.</h3>
+            </div>
+            
+            <div className="text-center">
+              <div className="bg-primary/10 p-4 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                <span className="text-2xl">⏰</span>
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-primary">Time? Yours.</h3>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Plans Overview Section - Full width with constrained content */}
       <div id="plans-overview">
