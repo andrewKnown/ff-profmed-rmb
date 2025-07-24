@@ -1,38 +1,46 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  /* Default Theme (Doctors) */
+  /* Profmed Social Post Aesthetic - Clean, Modern Design */
   :root {
-    --background: #F5F7F9;
-    --foreground: #0B254B;
+    --background: #FFFFFF;
+    --foreground: #000000;
     --card: #FFFFFF;
-    --card-foreground: #0B254B;
+    --card-foreground: #000000;
     --popover: #FFFFFF;
-    --popover-foreground: #0B254B;
-    --primary: #0B254B;
-    --primary-light: #1A3A6C;
+    --popover-foreground: #000000;
+    --primary: #000000;
+    --primary-light: #333333;
     --primary-foreground: #FFFFFF;
-    --secondary: #0077C8;
-    --secondary-light: #2D8FD5;
+    --secondary: #666666;
+    --secondary-light: #888888;
     --secondary-foreground: #FFFFFF;
-    --muted: #F1F5F9;
-    --muted-foreground: #64748B;
-    --accent: #D4A74C;
-    --accent-light: #E1BC6C;
+    --muted: #F8F9FA;
+    --muted-foreground: #666666;
+    --accent: #FF6B35;
+    --accent-light: #FF8A5C;
     --accent-foreground: #FFFFFF;
     --destructive: #FF0000;
     --destructive-foreground: #FFFFFF;
-    --border: #E2E8F0;
-    --input: #E2E8F0;
-    --ring: #0B254B;
-    --clinical-bg: #F5F7F9;
-    --clinical-text: #0B254B;
+    --border: #E5E5E5;
+    --input: #E5E5E5;
+    --ring: #FF6B35;
+    --clinical-bg: #FFFFFF;
+    --clinical-text: #000000;
     --header-image: #FFFFFF;
+    
+    /* Typography Tokens */
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --font-weight-extrabold: 800;
+    --font-weight-black: 900;
   }
 
   /* Architects Theme */
@@ -183,6 +191,38 @@
   body {
     font-family: 'Inter', sans-serif;
     transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  
+  /* Bold Typography Classes */
+  .heading-hero {
+    font-weight: var(--font-weight-black);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  .heading-section {
+    font-weight: var(--font-weight-extrabold);
+    font-size: clamp(1.875rem, 3vw, 2.5rem);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  
+  .text-bold {
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .text-accent-orange {
+    color: var(--accent);
+  }
+  
+  /* Design Element - Plus Symbol */
+  .plus-symbol {
+    color: var(--accent);
+    font-weight: var(--font-weight-black);
+    font-size: 1.5em;
   }
 }
 
@@ -205,4 +245,27 @@
   background-size: cover;
   background-position: center;
   transition: background-image 0.5s ease;
+}
+
+/* Social Post Aesthetic Components */
+.social-post-card {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.brand-header {
+  font-weight: var(--font-weight-bold);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--foreground);
+}
+
+.partnership-footer {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: var(--font-weight-medium);
 }

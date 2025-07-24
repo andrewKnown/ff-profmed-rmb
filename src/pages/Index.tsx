@@ -81,59 +81,74 @@ const Index = () => {
       {/* Navigation Bar */}
       <NavBar />
       
-      {/* Hero Section - Full width background with constrained content */}
+      {/* Hero Section - Clean Social Post Aesthetic */}
       <header 
-        className="py-16 md:py-24 lg:py-28 px-4 md:px-8 bg-gradient-to-br from-primary to-primary-light text-white header-background relative"
+        className="py-20 md:py-32 px-4 md:px-8 bg-white relative"
         style={{ 
-          backgroundImage: `linear-gradient(to bottom right, rgba(11, 37, 75, 0.7), rgba(26, 58, 108, 0.7)), url(${content.headerImage})`,
+          backgroundImage: `url(${content.headerImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundBlendMode: 'overlay',
         }}
       >
-        <div className="absolute inset-0 bg-black opacity-30"></div>
-        <div className="max-w-5xl mx-auto text-center relative z-10 animate-fade-in">
+        {/* Brand Header */}
+        <div className="absolute top-6 left-6">
+          <div className="brand-header">PROFMED</div>
+        </div>
+        
+        {/* Partnership Footer */}
+        <div className="absolute bottom-6 left-6">
+          <div className="partnership-footer">In partnership with RMB</div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10 animate-fade-in">
           {isLoading ? (
             <>
-              <Skeleton className="h-12 w-3/4 mx-auto mb-4 bg-white/20" />
-              <Skeleton className="h-6 w-2/3 mx-auto mb-8 bg-white/20" />
+              <Skeleton className="h-16 w-3/4 mb-6 bg-gray-200" />
+              <Skeleton className="h-8 w-2/3 mb-8 bg-gray-200" />
             </>
           ) : (
             <>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6">
-                {content.title}
+              <h1 className="heading-hero text-foreground mb-6 max-w-4xl">
+                {content.title.split(' + ').length > 1 ? (
+                  <>
+                    {content.title.split(' + ')[0]}{' '}
+                    <span className="plus-symbol">+</span>{' '}
+                    {content.title.split(' + ')[1]}
+                  </>
+                ) : (
+                  content.title
+                )}
               </h1>
-              <p className="text-xl md:text-2xl opacity-90 mb-8 max-w-3xl mx-auto">
+              <p className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl font-medium">
                 {content.subtitle}
               </p>
+              <button className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+                {content.cta}
+              </button>
             </>
           )}
-          
-          {/* Membership Application Notice */}
-          <div className="mb-8 bg-primary/30 backdrop-blur-sm p-4 rounded-lg inline-block">
-            <h2 className="text-xl font-bold mb-2">Profmed + RMB Credit Card</h2>
-            <p className="mb-3">Two essentials. Dual-benefit solution for young professionals aged 22-30.</p>
-          </div>
-          
-          {/* Chat Bot - Constrained width for usability */}
-          <div className="max-w-md mx-auto chatbot-section">
-            <ChatBot />
-          </div>
         </div>
       </header>
 
-      {/* Section 1: Value Proposition */}
-      <section className="py-16 px-4 md:px-8 bg-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-            Profmed + RMB Credit Card. Everything that matters.
-          </h2>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            You already know who you are, what you want, and how you're going to get there. You just need the right support at the right time. Designed for early-career professionals who want support, not red tape.
-          </p>
-          <p className="text-base md:text-lg text-muted-foreground">
-            That's why Profmed and RMB Private Bank have partnered to offer a dual benefit that covers more than costs. This offering backs your ambition with real benefits, from upfront medical cover to credit support designed for professionals with purpose.
-          </p>
+      {/* Section 1: Value Proposition - Social Post Inspired */}
+      <section className="py-20 px-4 md:px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="social-post-card max-w-4xl mx-auto text-center">
+            <div className="brand-header mb-8">PROFMED</div>
+            <h2 className="heading-section text-foreground mb-6">
+              MEDICAL AID <span className="plus-symbol">+</span> CREDIT CARD
+            </h2>
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
+              Everything that matters.
+            </h3>
+            <p className="text-lg text-secondary mb-8 max-w-3xl mx-auto font-medium">
+              You already know who you are, what you want, and how you're going to get there. You just need the right support at the right time.
+            </p>
+            <p className="text-base text-secondary max-w-3xl mx-auto">
+              That's why Profmed and RMB Private Bank have partnered to offer a dual benefit that covers more than costs. This offering backs your ambition with real benefits, from upfront medical cover to credit support designed for professionals with purpose.
+            </p>
+            <div className="partnership-footer mt-8">In partnership with RMB</div>
+          </div>
         </div>
       </section>
 

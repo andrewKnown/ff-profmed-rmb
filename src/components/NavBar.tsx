@@ -29,16 +29,12 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-background shadow-md py-2 px-4 md:px-8 sticky top-0 z-50 h-[150px]">
+    <nav className="bg-white border-b border-gray-100 py-4 px-4 md:px-8 sticky top-0 z-50 h-[150px]">
       <div className="max-w-[1152px] mx-auto flex items-center justify-between h-full">
-        {/* Logo - updated to h-14 */}
+        {/* Logo - Social Post Style */}
         <div>
           <Link to="/" className="flex items-center space-x-2">
-            <img 
-              src="/lovable-uploads/0f902728-6739-4e20-8857-e92b3e4712dc.png" 
-              alt="RMB Logo" 
-              className="w-[200px] h-auto" 
-            />
+            <div className="brand-header text-2xl">PROFMED</div>
           </Link>
         </div>
 
@@ -63,27 +59,27 @@ const NavBar = () => {
             "flex items-center space-x-6",
             isMobile && isOpen ? "flex-col space-y-2 space-x-0 w-full" : ""
           )}>
-            <Link to="/" className="text-foreground hover:text-primary transition-colors">
+            <Link to="/" className="text-foreground hover:text-accent transition-colors font-medium">
               Home
             </Link>
             
             <button 
               onClick={() => scrollToSection('plans-overview')} 
-              className="text-foreground hover:text-primary transition-colors text-left"
+              className="text-foreground hover:text-accent transition-colors text-left font-medium"
             >
               Plans
             </button>
             
             <button 
               onClick={() => scrollToSection('reviews')} 
-              className="text-foreground hover:text-primary transition-colors text-left"
+              className="text-foreground hover:text-accent transition-colors text-left font-medium"
             >
               Testimonials
             </button>
 
             <button 
               onClick={() => scrollToSection('trust-section')} 
-              className="text-foreground hover:text-primary transition-colors text-left"
+              className="text-foreground hover:text-accent transition-colors text-left font-medium"
             >
               Why Choose Us
             </button>

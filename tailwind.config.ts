@@ -29,6 +29,18 @@ export default {
           DEFAULT: 'var(--accent)',
           light: 'var(--accent-light)',
         },
+        brand: {
+          orange: 'var(--accent)',
+          'orange-light': 'var(--accent-light)',
+        },
+      },
+      fontWeight: {
+        'normal': 'var(--font-weight-normal)',
+        'medium': 'var(--font-weight-medium)',
+        'semibold': 'var(--font-weight-semibold)',
+        'bold': 'var(--font-weight-bold)',
+        'extrabold': 'var(--font-weight-extrabold)',
+        'black': 'var(--font-weight-black)',
       },
       backgroundColor: {
         'clinical-bg': 'var(--clinical-bg)',
