@@ -1,4 +1,5 @@
 
+import youngProfessionalHero from "@/assets/young-professional-hero.jpg";
 import { supabase } from "@/integrations/supabase/client";
 
 // Function to fetch a theme-specific image from Unsplash through the edge function
@@ -7,8 +8,8 @@ export const fetchThemeImage = async (theme: string): Promise<string | null> => 
     console.log("Fetching theme-specific image for:", theme);
     
     if (!theme || theme === 'default') {
-      console.log("No theme specified or using default, returning null");
-      return null;
+      console.log("No theme specified or using default, returning young professional hero image");
+      return youngProfessionalHero;
     }
     
     // Try to fetch from the edge function
