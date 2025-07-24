@@ -35,8 +35,8 @@ const NavBar = () => {
         <div>
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/ac603f38-2bca-4dd2-a8d2-360052790072.png" 
-              alt="Profmed Logo" 
+              src="/lovable-uploads/0f902728-6739-4e20-8857-e92b3e4712dc.png" 
+              alt="RMB Logo" 
               className="h-14 w-auto" 
             />
           </Link>

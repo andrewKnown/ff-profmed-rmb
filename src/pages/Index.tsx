@@ -20,8 +20,8 @@ const Index = () => {
     headerImage: string;
   }>({
     title: "FREEDOM TO LIVE YOUR PASSION",
-    subtitle: "Please wait whilst we load content tailored to your professional needs",
-    cta: "Finding the Best Medical Aid Options",
+    subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
+    cta: "Begin Your Healthcare Journey Today",
     headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -33,8 +33,8 @@ const Index = () => {
         // Get initial content synchronously for faster rendering
         const placeholderContent = {
           title: "FREEDOM TO LIVE YOUR PASSION",
-          subtitle: "Please wait whilst we load content tailored to your professional needs",
-          cta: "Finding the Best Medical Aid Options",
+          subtitle: "Smart medical cover + financial credit support for young professionals in one dual-benefit solution.",
+          cta: "Begin Your Healthcare Journey Today",
           headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
         };
         setContent(placeholderContent);
@@ -111,8 +111,8 @@ const Index = () => {
           
           {/* Membership Application Notice */}
           <div className="mb-8 bg-primary/30 backdrop-blur-sm p-4 rounded-lg inline-block">
-            <h2 className="text-xl font-bold mb-2">Begin Your Healthcare Journey Today</h2>
-            <p className="mb-3">Use our virtual assistant below to check your eligibility and explore membership options</p>
+            <h2 className="text-xl font-bold mb-2">Profmed + RMB Credit Card</h2>
+            <p className="mb-3">Two essentials. Dual-benefit solution for young professionals aged 22-30.</p>
           </div>
           
           {/* Chat Bot - Constrained width for usability */}
