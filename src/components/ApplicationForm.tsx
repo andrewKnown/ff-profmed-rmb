@@ -8,6 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const southAfricanCities = [
   "Cape Town", "Johannesburg", "Durban", "Pretoria", "Port Elizabeth", "Bloemfontein",
@@ -54,23 +55,19 @@ export default function ApplicationForm() {
 
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch('https://eogs8thjhxn6nt1.m.pipedream.net', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      const { data: responseData, error } = await supabase.functions.invoke('submit-application', {
+        body: data,
       });
 
-      if (response.ok) {
-        toast({
-          title: "Application Submitted",
-          description: "Thank you for your application. We'll be in touch soon!",
-        });
-        form.reset();
-      } else {
-        throw new Error('Failed to submit application');
+      if (error) {
+        throw error;
       }
+
+      toast({
+        title: "Application Submitted",
+        description: "Thank you for your application. We'll be in touch soon!",
+      });
+      form.reset();
     } catch (error) {
       toast({
         title: "Submission Failed",
