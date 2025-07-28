@@ -13,7 +13,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Disclaimer from "./pages/Disclaimer";
 
 import { Toaster } from "@/components/ui/toaster";
-import VoiceAssistant from "./components/VoiceAssistant";
+
 import "./App.css";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-      <VoiceAssistant />
+      
       <Toaster />
     </Router>
   );
