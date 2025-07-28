@@ -52,13 +52,32 @@ export default function ApplicationForm() {
     },
   });
 
-  const onSubmit = (data: FormData) => {
-    console.log("Form submitted:", data);
-    toast({
-      title: "Application Submitted",
-      description: "Thank you for your application. We'll be in touch soon!",
-    });
-    form.reset();
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await fetch('https://eogs8thjhxn6nt1.m.pipedream.net', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Application Submitted",
+          description: "Thank you for your application. We'll be in touch soon!",
+        });
+        form.reset();
+      } else {
+        throw new Error('Failed to submit application');
+      }
+    } catch (error) {
+      toast({
+        title: "Submission Failed",
+        description: "There was an error submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
