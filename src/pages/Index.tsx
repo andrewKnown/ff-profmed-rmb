@@ -123,7 +123,10 @@ const Index = () => {
               <p className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl font-medium">
                 {content.subtitle}
               </p>
-              <button className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors">
+              <button 
+                onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
+              >
                 {content.cta}
               </button>
             </>
@@ -207,14 +210,12 @@ const Index = () => {
             <p className="text-lg text-muted-foreground mb-6">
               Are you ready to design the life you want without restrictions and complexities?
             </p>
-            <a 
-              href="https://profmed.co.za/rmb" 
-              target="_blank" 
-              rel="noopener noreferrer"
+            <button 
+              onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
             >
               Apply now
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -245,14 +246,12 @@ const Index = () => {
             </p>
           </div>
           
-          <a 
-            href="https://profmed.co.za/rmb" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <button 
+            onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
           >
             Apply now
-          </a>
+          </button>
         </div>
       </section>
 
@@ -297,7 +296,7 @@ const Index = () => {
       </section>
 
       {/* Application Form Section */}
-      <section className="py-16 px-4 bg-muted/50">
+      <section id="application-form" className="py-16 px-4 bg-muted/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
