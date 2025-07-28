@@ -9,6 +9,7 @@ import { useThemeParam, getThemeContent } from "../hooks/useThemeParam";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "../components/Footer";
+import ApplicationForm from "../components/ApplicationForm";
 
 const Index = () => {
   const { toast } = useToast();
@@ -292,6 +293,19 @@ const Index = () => {
               <h3 className="text-xl font-bold mb-2 text-primary">Time? Yours.</h3>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Application Form Section */}
+      <section className="py-16 px-4 bg-muted/50">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
+            <p className="text-xl text-muted-foreground">
+              Join the professionals who are already backed by this dual benefit solution
+            </p>
+          </div>
+          <ApplicationForm />
         </div>
       </section>
 
