@@ -56,6 +56,45 @@ const ReviewsCarousel = () => {
 
     return () => clearInterval(intervalId);
   }, [api]);
-  return;
+  return (
+    <div className="py-16 md:py-20 lg:py-24 bg-medical-background">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
+          What Our Members Say
+        </h2>
+        
+        <Carousel setApi={setApi} className="w-full max-w-4xl mx-auto">
+          <CarouselContent>
+            {reviews.map((review) => (
+              <CarouselItem key={review.id} className="md:basis-1/2 lg:basis-1/3">
+                <div className="p-6 bg-white rounded-lg shadow-medical-card h-full flex flex-col">
+                  <Quote className="w-8 h-8 text-secondary mb-4" />
+                  <p className="text-medical-text flex-grow mb-4">{review.text}</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="font-semibold text-primary">{review.author}</p>
+                      <p className="text-sm text-medical-text/70">{review.date}</p>
+                    </div>
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className={`w-4 h-4 ${
+                            i < review.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    </div>
+  );
 };
 export default ReviewsCarousel;
