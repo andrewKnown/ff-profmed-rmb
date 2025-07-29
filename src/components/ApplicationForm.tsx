@@ -195,6 +195,9 @@ export default function ApplicationForm() {
                           date > new Date() || date < new Date("1900-01-01")
                         }
                         defaultMonth={new Date(2000, 0)}
+                        captionLayout="dropdown"
+                        fromYear={1950}
+                        toYear={new Date().getFullYear()}
                         initialFocus
                         className={cn("p-3 pointer-events-auto")}
                       />
