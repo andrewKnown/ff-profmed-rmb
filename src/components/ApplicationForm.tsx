@@ -10,29 +10,20 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const southAfricanCities = [
-  "Cape Town", "Johannesburg", "Durban", "Pretoria", "Port Elizabeth", "Bloemfontein",
-  "East London", "Pietermaritzburg", "Nelspruit", "Kimberley", "Polokwane", "Mafikeng",
-  "Upington", "Rustenburg", "Witbank", "Vanderbijlpark", "Centurion", "Benoni",
-  "Boksburg", "Welkom", "Newcastle", "Vereeniging", "Krugersdorp", "Alberton"
-];
-
-const studyYears = ["1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "Postgraduate"];
-
-const fieldsOfStudy = [
-  "Medicine", "Law", "Engineering", "Finance", "Architecture", "Sciences", "Business Administration",
-  "Computer Science", "Accounting", "Economics", "Psychology", "Nursing", "Pharmacy", "Dentistry",
-  "Veterinary Science", "Education", "Social Work", "Information Technology"
+const degreeTypes = [
+  "Bachelor's Degree", "Honours Degree", "Master's Degree", "Doctorate/PhD", 
+  "Professional Degree", "Diploma", "Certificate"
 ];
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  surname: z.string().min(2, "Surname must be at least 2 characters"),
-  city: z.string().min(1, "Please select a city"),
-  age: z.number().min(22, "Must be at least 22 years old").max(30, "Must be 30 years old or younger"),
-  fieldOfStudy: z.string().min(1, "Please select your field of study"),
-  yearOfStudy: z.string().min(1, "Please select your year of study"),
-  university: z.string().min(2, "University name must be at least 2 characters"),
+  firstname: z.string().min(2, "First name must be at least 2 characters"),
+  lastname: z.string().min(2, "Last name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  age: z.number().min(18, "Must be at least 18 years old").max(30, "Must be under 30 for eligibility"),
+  degree_type: z.string().min(1, "Please select a degree type"),
+  institution_name: z.string().optional(),
+  graduation_year: z.number().optional(),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -43,13 +34,14 @@ export default function ApplicationForm() {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      surname: "",
-      city: "",
-      age: 22,
-      fieldOfStudy: "",
-      yearOfStudy: "",
-      university: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      phone: "",
+      age: 18,
+      degree_type: "",
+      institution_name: "",
+      graduation_year: undefined,
     },
   });
 
@@ -91,10 +83,10 @@ export default function ApplicationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="name"
+                name="firstname"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>First Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter your first name" {...field} />
                     </FormControl>
@@ -105,12 +97,12 @@ export default function ApplicationForm() {
               
               <FormField
                 control={form.control}
-                name="surname"
+                name="lastname"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Surname</FormLabel>
+                    <FormLabel>Last Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your surname" {...field} />
+                      <Input placeholder="Enter your last name" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -121,24 +113,13 @@ export default function ApplicationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="city"
+                name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>City</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select your city" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {southAfricanCities.map((city) => (
-                          <SelectItem key={city} value={city}>
-                            {city}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <FormLabel>Email</FormLabel>
+                    <FormControl>
+                      <Input type="email" placeholder="Enter your email" {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -146,17 +127,12 @@ export default function ApplicationForm() {
 
               <FormField
                 control={form.control}
-                name="age"
+                name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Age</FormLabel>
+                    <FormLabel>Phone Number</FormLabel>
                     <FormControl>
-                      <Input 
-                        type="number" 
-                        placeholder="Enter your age" 
-                        {...field}
-                        onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
-                      />
+                      <Input placeholder="Enter your phone number" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -166,20 +142,39 @@ export default function ApplicationForm() {
 
             <FormField
               control={form.control}
-              name="fieldOfStudy"
+              name="age"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Field of Study</FormLabel>
+                  <FormLabel>Age</FormLabel>
+                  <FormControl>
+                    <Input 
+                      type="number" 
+                      placeholder="Enter your age" 
+                      {...field}
+                      onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="degree_type"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Degree Type</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select your field of study" />
+                        <SelectValue placeholder="Select your degree type" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      {fieldsOfStudy.map((field) => (
-                        <SelectItem key={field} value={field}>
-                          {field}
+                      {degreeTypes.map((degree) => (
+                        <SelectItem key={degree} value={degree}>
+                          {degree}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -192,24 +187,13 @@ export default function ApplicationForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
                 control={form.control}
-                name="yearOfStudy"
+                name="institution_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Year of Study</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select your year" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {studyYears.map((year) => (
-                          <SelectItem key={year} value={year}>
-                            {year}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                    <FormLabel>Institution Name <span className="text-muted-foreground">(Optional)</span></FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter your institution" {...field} />
+                    </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -217,12 +201,18 @@ export default function ApplicationForm() {
 
               <FormField
                 control={form.control}
-                name="university"
+                name="graduation_year"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>University</FormLabel>
+                    <FormLabel>Graduation Year <span className="text-muted-foreground">(Optional)</span></FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your university" {...field} />
+                      <Input 
+                        type="number" 
+                        placeholder="Enter graduation year" 
+                        {...field}
+                        onChange={(e) => field.onChange(e.target.value ? parseInt(e.target.value) : undefined)}
+                        value={field.value || ""}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
