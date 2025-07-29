@@ -91,7 +91,7 @@ export default function ApplicationForm() {
   };
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full max-w-2xl mx-auto bg-background">
       <CardHeader>
         <CardTitle className="text-2xl text-center">Apply for Profmed + RMB</CardTitle>
         <CardDescription className="text-center">
