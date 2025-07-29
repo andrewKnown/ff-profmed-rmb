@@ -43,6 +43,7 @@ const formSchema = z.object({
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
   dob: z.date({ required_error: "Date of birth is required" }),
   degree_type: z.string().min(1, "Please select a degree type"),
+  field_of_study: z.string().min(1, "Please select a field of study"),
   institution_name: z.string().min(1, "Institution name is required"),
   graduation_year: z.number().min(1990, "Please enter a valid graduation year"),
 });
@@ -61,6 +62,7 @@ export default function ApplicationForm() {
       phone: "",
       dob: new Date(2000, 0, 1),
       degree_type: "",
+      field_of_study: "",
       institution_name: "",
       graduation_year: 2024,
     },
@@ -272,30 +274,57 @@ export default function ApplicationForm() {
               />
             </div>
 
-            <FormField
-              control={form.control}
-              name="degree_type"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Degree Type</FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger>
-                        <SelectValue placeholder="Select your degree type" />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {degreeTypes.map((degree) => (
-                        <SelectItem key={degree} value={degree}>
-                          {degree}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="degree_type"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Degree Type</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your degree type" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {degreeTypes.map((degree) => (
+                          <SelectItem key={degree} value={degree}>
+                            {degree}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="field_of_study"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Field of Study</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select your field of study" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {fieldsOfStudy.map((field) => (
+                          <SelectItem key={field} value={field}>
+                            {field}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <FormField
