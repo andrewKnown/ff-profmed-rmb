@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Check, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -52,6 +52,7 @@ type FormData = z.infer<typeof formSchema>;
 
 export default function ApplicationForm() {
   const { toast } = useToast();
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -69,6 +70,8 @@ export default function ApplicationForm() {
   });
 
   const onSubmit = async (data: FormData) => {
+    setSubmitStatus('submitting');
+    
     try {
       const { data: responseData, error } = await supabase.functions.invoke('submit-application', {
         body: data,
@@ -78,12 +81,20 @@ export default function ApplicationForm() {
         throw error;
       }
 
+      setSubmitStatus('success');
+      
+      // Keep the success state for 2 seconds before resetting
+      setTimeout(() => {
+        setSubmitStatus('idle');
+        form.reset();
+      }, 2000);
+
       toast({
         title: "Application Submitted",
         description: "Thank you for your application. We'll be in touch soon!",
       });
-      form.reset();
     } catch (error) {
+      setSubmitStatus('idle');
       toast({
         title: "Submission Failed",
         description: "There was an error submitting your application. Please try again.",
@@ -362,8 +373,25 @@ export default function ApplicationForm() {
               />
             </div>
 
-            <Button type="submit" className="w-full" size="lg">
-              Submit Application
+            <Button 
+              type="submit" 
+              className="w-full transition-all duration-300" 
+              size="lg"
+              disabled={submitStatus !== 'idle'}
+            >
+              {submitStatus === 'idle' && "Submit Application"}
+              {submitStatus === 'submitting' && (
+                <div className="flex items-center gap-2">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Submitting...
+                </div>
+              )}
+              {submitStatus === 'success' && (
+                <div className="flex items-center gap-2">
+                  <Check className="h-4 w-4 animate-scale-in text-green-500" />
+                  Application Submitted!
+                </div>
+              )}
             </Button>
           </form>
         </Form>
