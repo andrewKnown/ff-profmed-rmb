@@ -32,7 +32,7 @@ serve(async (req) => {
     console.log('Form data received:', formData)
 
     console.log('Sending to webhook...')
-    const response = await fetch('https://eogs8thjhxn6nt1.m.pipedream.net', {
+    const response = await fetch('https://eoy459hba6ncgm0.m.pipedream.net', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
