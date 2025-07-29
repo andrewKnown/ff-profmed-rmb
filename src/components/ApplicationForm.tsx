@@ -15,6 +15,22 @@ const degreeTypes = [
   "Professional Degree", "Diploma", "Certificate"
 ];
 
+const southAfricanCities = [
+  "Cape Town", "Johannesburg", "Durban", "Pretoria", "Port Elizabeth", 
+  "Bloemfontein", "East London", "Pietermaritzburg", "Nelspruit", "Kimberley",
+  "Polokwane", "Rustenburg", "Witbank", "George", "Ladysmith"
+];
+
+const fieldsOfStudy = [
+  "Medicine", "Law", "Engineering", "Finance", "Architecture", "Computer Science",
+  "Business Administration", "Accounting", "Psychology", "Dentistry", "Veterinary Science",
+  "Pharmacy", "Nursing", "Teaching", "Marketing", "Economics", "Other"
+];
+
+const studyYears = [
+  "1st Year", "2nd Year", "3rd Year", "4th Year", "5th Year", "6th Year", "Graduate"
+];
+
 const formSchema = z.object({
   firstname: z.string().min(2, "First name must be at least 2 characters"),
   lastname: z.string().min(2, "Last name must be at least 2 characters"),
