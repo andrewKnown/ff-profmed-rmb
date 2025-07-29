@@ -161,49 +161,116 @@ export default function ApplicationForm() {
               />
             </div>
 
-            <FormField
-              control={form.control}
-              name="dob"
-              render={({ field }) => (
-                <FormItem className="flex flex-col">
-                  <FormLabel>Date of Birth</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
+            <div className="grid grid-cols-3 gap-4">
+              <FormField
+                control={form.control}
+                name="dob"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Year</FormLabel>
+                    <Select 
+                      value={field.value ? field.value.getFullYear().toString() : "2000"}
+                      onValueChange={(value) => {
+                        const year = parseInt(value);
+                        const currentDate = field.value || new Date(2000, 0, 1);
+                        const newDate = new Date(year, currentDate.getMonth(), currentDate.getDate());
+                        field.onChange(newDate);
+                      }}
+                    >
                       <FormControl>
-                        <Button
-                          variant={"outline"}
-                          className={cn(
-                            "w-full pl-3 text-left font-normal",
-                            !field.value && "text-muted-foreground"
-                          )}
-                        >
-                          {field.value ? (
-                            format(field.value, "PPP")
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Year" />
+                        </SelectTrigger>
                       </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0 bg-background" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={field.value}
-                        onSelect={field.onChange}
-                        disabled={(date) =>
-                          date > new Date() || date < new Date("1900-01-01")
-                        }
-                        defaultMonth={new Date(2000, 0)}
-                        initialFocus
-                        className={cn("p-3 pointer-events-auto")}
-                      />
-                    </PopoverContent>
-                  </Popover>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+                      <SelectContent className="bg-background">
+                        {Array.from({ length: new Date().getFullYear() - 1950 + 1 }, (_, i) => {
+                          const year = new Date().getFullYear() - i;
+                          return (
+                            <SelectItem key={year} value={year.toString()}>
+                              {year}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="dob"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Month</FormLabel>
+                    <Select 
+                      value={field.value ? (field.value.getMonth() + 1).toString() : "1"}
+                      onValueChange={(value) => {
+                        const month = parseInt(value) - 1;
+                        const currentDate = field.value || new Date(2000, 0, 1);
+                        const newDate = new Date(currentDate.getFullYear(), month, currentDate.getDate());
+                        field.onChange(newDate);
+                      }}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Month" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-background">
+                        {Array.from({ length: 12 }, (_, i) => {
+                          const month = i + 1;
+                          const monthName = new Date(2000, i, 1).toLocaleString('default', { month: 'long' });
+                          return (
+                            <SelectItem key={month} value={month.toString()}>
+                              {monthName}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="dob"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Day</FormLabel>
+                    <Select 
+                      value={field.value ? field.value.getDate().toString() : "1"}
+                      onValueChange={(value) => {
+                        const day = parseInt(value);
+                        const currentDate = field.value || new Date(2000, 0, 1);
+                        const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                        field.onChange(newDate);
+                      }}
+                    >
+                      <FormControl>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Day" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-background">
+                        {Array.from({ length: 31 }, (_, i) => {
+                          const day = i + 1;
+                          return (
+                            <SelectItem key={day} value={day.toString()}>
+                              {day}
+                            </SelectItem>
+                          );
+                        })}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
 
             <FormField
               control={form.control}
