@@ -2,13 +2,18 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { cn } from "@/lib/utils";
 
 const degreeTypes = [
   "Bachelor's Degree", "Honours Degree", "Master's Degree", "Doctorate/PhD", 
@@ -36,10 +41,10 @@ const formSchema = z.object({
   lastname: z.string().min(2, "Last name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
   phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  age: z.number().min(18, "Must be at least 18 years old").max(30, "Must be under 30 for eligibility"),
+  dob: z.date({ required_error: "Date of birth is required" }),
   degree_type: z.string().min(1, "Please select a degree type"),
-  institution_name: z.string().optional(),
-  graduation_year: z.number().optional(),
+  institution_name: z.string().min(1, "Institution name is required"),
+  graduation_year: z.number().min(1990, "Please enter a valid graduation year"),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -54,10 +59,10 @@ export default function ApplicationForm() {
       lastname: "",
       email: "",
       phone: "",
-      age: 18,
+      dob: new Date(2000, 0, 1),
       degree_type: "",
       institution_name: "",
-      graduation_year: undefined,
+      graduation_year: 2024,
     },
   });
 
@@ -158,18 +163,42 @@ export default function ApplicationForm() {
 
             <FormField
               control={form.control}
-              name="age"
+              name="dob"
               render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Age</FormLabel>
-                  <FormControl>
-                    <Input 
-                      type="number" 
-                      placeholder="Enter your age" 
-                      {...field}
-                      onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
-                    />
-                  </FormControl>
+                <FormItem className="flex flex-col">
+                  <FormLabel>Date of Birth</FormLabel>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <FormControl>
+                        <Button
+                          variant={"outline"}
+                          className={cn(
+                            "w-full pl-3 text-left font-normal",
+                            !field.value && "text-muted-foreground"
+                          )}
+                        >
+                          {field.value ? (
+                            format(field.value, "PPP")
+                          ) : (
+                            <span>Pick a date</span>
+                          )}
+                          <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                        </Button>
+                      </FormControl>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="start">
+                      <Calendar
+                        mode="single"
+                        selected={field.value}
+                        onSelect={field.onChange}
+                        disabled={(date) =>
+                          date > new Date() || date < new Date("1900-01-01")
+                        }
+                        initialFocus
+                        className={cn("p-3 pointer-events-auto")}
+                      />
+                    </PopoverContent>
+                  </Popover>
                   <FormMessage />
                 </FormItem>
               )}
@@ -206,7 +235,7 @@ export default function ApplicationForm() {
                 name="institution_name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Institution Name <span className="text-muted-foreground">(Optional)</span></FormLabel>
+                    <FormLabel>Institution Name</FormLabel>
                     <FormControl>
                       <Input placeholder="Enter your institution" {...field} />
                     </FormControl>
@@ -220,14 +249,14 @@ export default function ApplicationForm() {
                 name="graduation_year"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Graduation Year <span className="text-muted-foreground">(Optional)</span></FormLabel>
+                    <FormLabel>Graduation Year</FormLabel>
                     <FormControl>
                       <Input 
                         type="number" 
                         placeholder="Enter graduation year" 
                         {...field}
-                        onChange={(e) => field.onChange(e.target.value ? parseInt(e.target.value) : undefined)}
-                        value={field.value || ""}
+                        onChange={(e) => field.onChange(parseInt(e.target.value) || 0)}
+                        value={field.value}
                       />
                     </FormControl>
                     <FormMessage />
