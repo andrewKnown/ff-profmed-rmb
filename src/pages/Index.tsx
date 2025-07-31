@@ -112,7 +112,7 @@ const Index = () => {
               <button onClick={() => document.getElementById('application-form')?.scrollIntoView({
             behavior: 'smooth'
           })} className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors">
-                Apply Today
+                Apply Now
               </button>
             </>}
         </div>
