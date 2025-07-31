@@ -86,7 +86,7 @@ const Index = () => {
     }}>
         {/* Brand Header */}
         <div className="absolute top-6 left-6">
-          <div className="brand-header">PROFMED</div>
+          
         </div>
         
         {/* Partnership Footer */}
