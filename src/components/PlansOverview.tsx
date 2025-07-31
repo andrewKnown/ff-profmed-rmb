@@ -168,7 +168,7 @@ const PlansOverview = () => {
         {/* CTA Section */}
         <div className="text-center">
           <Button 
-            onClick={scrollToChatbot}
+            onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="text-lg px-8 py-6 bg-secondary hover:bg-secondary/90 shadow-lg"
           >
             {content.cta}
