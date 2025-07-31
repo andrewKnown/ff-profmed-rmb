@@ -379,7 +379,7 @@ export default function ApplicationForm() {
               size="lg"
               disabled={submitStatus !== 'idle'}
             >
-              {submitStatus === 'idle' && "Apply Today"}
+              {submitStatus === 'idle' && "Apply Now"}
               {submitStatus === 'submitting' && (
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
