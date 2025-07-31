@@ -38,7 +38,7 @@ const TrustSection = () => {
           
           <div className="flex justify-center">
             <Button onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })} size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium py-6 px-8">
-              Apply Now <MessageSquare className="ml-2" />
+              Apply Now
             </Button>
           </div>
         </div>
