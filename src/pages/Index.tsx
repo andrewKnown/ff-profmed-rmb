@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import ChatBot from "../components/ChatBot";
 import TrustSection from "../components/TrustSection";
@@ -10,10 +9,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useToast } from "@/hooks/use-toast";
 import Footer from "../components/Footer";
 import ApplicationForm from "../components/ApplicationForm";
-
 const Index = () => {
-  const { toast } = useToast();
-  const { theme, isLoading: isThemeLoading } = useThemeParam();
+  const {
+    toast
+  } = useToast();
+  const {
+    theme,
+    isLoading: isThemeLoading
+  } = useThemeParam();
   const [content, setContent] = useState<{
     title: string;
     subtitle: string;
@@ -23,10 +26,9 @@ const Index = () => {
     title: "You dream it. We'll help you achieve it.",
     subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
     cta: "Apply now",
-    headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
+    headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png'
   });
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     const loadContent = async () => {
       setIsLoading(true);
@@ -36,35 +38,31 @@ const Index = () => {
           title: "You dream it. We'll help you achieve it.",
           subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
           cta: "Apply now",
-          headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png',
+          headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png'
         };
         setContent(placeholderContent);
-        
+
         // Then fetch or generate the actual content
         const themeContent = await getThemeContent(theme);
         console.log("Loaded theme content:", themeContent);
-        
+
         // Final safety check for the Profmed logo or relative paths
-        if (themeContent.headerImage && 
-            (themeContent.headerImage.includes('ac603f38-2bca-4dd2-a8d2-360052790072') || 
-             themeContent.headerImage.startsWith('/lovable-uploads/'))) {
+        if (themeContent.headerImage && (themeContent.headerImage.includes('ac603f38-2bca-4dd2-a8d2-360052790072') || themeContent.headerImage.startsWith('/lovable-uploads/'))) {
           console.log("Replacing logo or relative path with rocket launch image");
           themeContent.headerImage = '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png';
         }
-        
         setContent(themeContent);
       } catch (error) {
         console.error("Error loading theme content:", error);
         toast({
           title: "Content Error",
           description: "We encountered an issue while loading personalised content",
-          variant: "destructive",
+          variant: "destructive"
         });
       } finally {
         setIsLoading(false);
       }
     };
-    
     if (!isThemeLoading) {
       loadContent();
     }
@@ -76,21 +74,16 @@ const Index = () => {
       document.title = content.title;
     }
   }, [content.title]);
-
-  return (
-    <div className="min-h-screen bg-background text-foreground">
+  return <div className="min-h-screen bg-background text-foreground">
       {/* Navigation Bar */}
       <NavBar />
       
       {/* Hero Section - Clean Social Post Aesthetic */}
-      <header 
-        className="py-20 md:py-32 px-4 md:px-8 bg-white relative"
-        style={{ 
-          backgroundImage: `url(${content.headerImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      <header className="py-20 md:py-32 px-4 md:px-8 bg-white relative" style={{
+      backgroundImage: `url(${content.headerImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    }}>
         {/* Brand Header */}
         <div className="absolute top-6 left-6">
           <div className="brand-header">PROFMED</div>
@@ -102,35 +95,26 @@ const Index = () => {
         </div>
         
         <div className="max-w-6xl mx-auto relative z-10 animate-fade-in">
-          {isLoading ? (
-            <>
+          {isLoading ? <>
               <Skeleton className="h-16 w-3/4 mb-6 bg-gray-200" />
               <Skeleton className="h-8 w-2/3 mb-8 bg-gray-200" />
-            </>
-          ) : (
-            <>
+            </> : <>
               <h1 className="heading-hero text-foreground mb-6 max-w-4xl">
-                {content.title.split(' + ').length > 1 ? (
-                  <>
+                {content.title.split(' + ').length > 1 ? <>
                     {content.title.split(' + ')[0]}{' '}
                     <span className="plus-symbol">+</span>{' '}
                     {content.title.split(' + ')[1]}
-                  </>
-                ) : (
-                  content.title
-                )}
+                  </> : content.title}
               </h1>
               <p className="text-xl md:text-2xl text-secondary mb-8 max-w-3xl font-medium">
                 {content.subtitle}
               </p>
-              <button 
-                onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors"
-              >
+              <button onClick={() => document.getElementById('application-form')?.scrollIntoView({
+            behavior: 'smooth'
+          })} className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors">
                 {content.cta}
               </button>
-            </>
-          )}
+            </>}
         </div>
       </header>
 
@@ -206,17 +190,7 @@ const Index = () => {
             <p className="text-sm text-muted-foreground mt-4 italic">Spend smart, get rewarded - no extra effort needed</p>
           </div>
           
-          <div className="text-center mt-8">
-            <p className="text-lg text-muted-foreground mb-6">
-              Are you ready to design the life you want without restrictions and complexities?
-            </p>
-            <button 
-              onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
-              className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-            >
-              Apply now
-            </button>
-          </div>
+          
         </div>
       </section>
 
@@ -246,10 +220,9 @@ const Index = () => {
             </p>
           </div>
           
-          <button 
-            onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-          >
+          <button onClick={() => document.getElementById('application-form')?.scrollIntoView({
+          behavior: 'smooth'
+        })} className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
             Apply now
           </button>
         </div>
@@ -325,8 +298,6 @@ const Index = () => {
 
       {/* Footer - using the new Footer component */}
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
