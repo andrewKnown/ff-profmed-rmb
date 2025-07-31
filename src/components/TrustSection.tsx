@@ -15,7 +15,7 @@ const TrustSection = () => {
           Join the professionals who are already backed
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 text-center items-center justify-center">
           <div className="flex flex-col items-center text-center p-6 bg-white rounded-lg shadow-medical-card hover:shadow-lg transition-all">
             <Users className="w-12 h-12 text-secondary mb-4" />
             <h3 className="font-semibold mb-2 text-primary text-xl">35,000+ Members</h3>
