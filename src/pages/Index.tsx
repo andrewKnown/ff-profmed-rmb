@@ -23,9 +23,9 @@ const Index = () => {
     cta: string;
     headerImage: string;
   }>({
-    title: "You dream it. We'll help you achieve it.",
-    subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
-    cta: "Apply now",
+    title: "You're not waiting for a title or chasing someone else's version of success. You're already in motion.",
+    subtitle: "That's why Profmed and RMB have partnered to bring you a dual benefit solution that supports your health, finances, and future from day one.",
+    cta: "You're approved. You're protected. You're ready.",
     headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png'
   });
   const [isLoading, setIsLoading] = useState(true);
@@ -35,9 +35,9 @@ const Index = () => {
       try {
         // Get initial content synchronously for faster rendering
         const placeholderContent = {
-          title: "You dream it. We'll help you achieve it.",
-          subtitle: "Profmed Medical Aid + RMB Credit Card: one decision, dual support for your next step.",
-          cta: "Apply now",
+          title: "You're not waiting for a title or chasing someone else's version of success. You're already in motion.",
+          subtitle: "That's why Profmed and RMB have partnered to bring you a dual benefit solution that supports your health, finances, and future from day one.",
+          cta: "You're approved. You're protected. You're ready.",
           headerImage: '/lovable-uploads/1cdc1410-8abb-4a6f-8e7f-3cde641b0d99.png'
         };
         setContent(placeholderContent);
@@ -112,43 +112,46 @@ const Index = () => {
               <button onClick={() => document.getElementById('application-form')?.scrollIntoView({
             behavior: 'smooth'
           })} className="bg-accent hover:bg-accent-light text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors">
-                {content.cta}
+                Apply Today
               </button>
             </>}
         </div>
       </header>
 
-      {/* Section 1: Value Proposition - Social Post Inspired */}
+      {/* Section 1: Problem Definition - What fuels your ambition? */}
       <section className="py-20 px-4 md:px-8 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="social-post-card max-w-4xl mx-auto text-center">
             <div className="brand-header mb-8">PROFMED</div>
             <h2 className="heading-section text-foreground mb-6">
-              MEDICAL AID <span className="plus-symbol">+</span> CREDIT CARD
+              What fuels your ambition?
             </h2>
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6">
-              Everything that matters.
+              Traditional credit cards reward you after you've made it.
             </h3>
             <p className="text-lg text-secondary mb-8 max-w-3xl mx-auto font-medium">
-              You already know who you are, what you want, and how you're going to get there. You just need the right support at the right time.
+              But what if you're still building your practice, your career, your life? You don't need permission. You need tools that keep up.
             </p>
             <p className="text-base text-secondary max-w-3xl mx-auto">
-              That's why Profmed and RMB Private Bank have partnered to offer a dual benefit that covers more than costs. This offering backs your ambition with real benefits, from upfront medical cover to credit support designed for professionals with purpose.
+              Whether you're in hospital wards, courtrooms, or consulting rooms, you're under pressure and on the move. You don't need more admin; you need support you can trust.
             </p>
             <div className="partnership-footer mt-8">In partnership with RMB</div>
           </div>
         </div>
       </section>
 
-      {/* Section 2: Product Overview */}
+      {/* Section 2: Amazing Attainable Solution */}
       <section className="py-16 px-4 md:px-8 bg-muted/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-              Two essentials. Dual-benefit solution.
+              Two essentials. One seamless solution.
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-4xl mx-auto">
-              The Profmed medical aid + RMB Credit Card is a dual benefit offer that combines intelligent medical cover with a smart credit card offering designed for early-career professionals who are already moving fast and want tools that help them move smarter.
+              Medical cover from Profmed. Banking benefits from RMB Private Bank. One solution that simplifies your life while supporting your growth.
+            </p>
+            <p className="text-base text-muted-foreground max-w-3xl mx-auto">
+              This isn't a perk. It's a tool for professionals with purpose. It's cover when you're tired, support when it's late, and tools that flex when you can't.
             </p>
           </div>
           
@@ -223,7 +226,7 @@ const Index = () => {
           <button onClick={() => document.getElementById('application-form')?.scrollIntoView({
           behavior: 'smooth'
         })} className="inline-block bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors">
-            Apply now
+            Start something smart. Start it backed.
           </button>
         </div>
       </section>
@@ -272,9 +275,9 @@ const Index = () => {
       <section id="application-form" className="py-16 px-4 bg-muted/50">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Ready to Apply?</h2>
+            <h2 className="text-3xl font-bold mb-4">Your future, your rules.</h2>
             <p className="text-xl text-muted-foreground">
-              Join the professionals who are already backed by this dual benefit solution
+              Let's back it properly. Applications are now open.
             </p>
           </div>
           <ApplicationForm />

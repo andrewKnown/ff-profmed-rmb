@@ -2,36 +2,36 @@ import React, { useEffect, useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Star, Quote } from "lucide-react";
 
-// This would typically come from your Google My Business API
+// Professional-specific testimonials from the copy deck
 const reviews = [{
   id: 1,
-  author: "Sarah Johnson",
+  author: "Sarah, 26, Medical Resident",
   rating: 5,
-  text: "Exceptional medical aid service! The coverage is comprehensive and their customer support team is always helpful.",
+  text: "It paid for my blood tests after burnout. It covered my therapy. It got me home when my car broke down. It's not what's in my wallet that matters - it's what it makes possible.",
   date: "March 2025"
 }, {
   id: 2,
-  author: "Michael Thompson",
+  author: "Michael, 28, Legal Articles",
   rating: 5,
-  text: "I've been with them for two years now and couldn't be happier. The claims process is smooth and efficient.",
+  text: "Things I didn't know I'd need at 25: Card for first root canal, Lounge access during cancelled flight, Mental health support in week 2 of articles. They don't teach you this in uni.",
   date: "April 2025"
 }, {
   id: 3,
-  author: "Emily Davis",
-  rating: 4,
-  text: "Great value for money. The benefits are excellent and they really understand healthcare professionals' needs.",
+  author: "Emily, 27, Architect",
+  rating: 5,
+  text: "My first year taught me you can't push through burnout forever, debt doesn't wait for payday, and mental health matters even when deadlines don't. This solution gave me real support.",
   date: "April 2025"
 }, {
   id: 4,
-  author: "Robert Wilson",
+  author: "Robert, 29, Finance Professional",
   rating: 5,
-  text: "The customer service is outstanding. They helped me navigate through the complex medical aid system with ease.",
+  text: "Starting a business, finishing an exam, getting that diagnosis - we've been there. This is cover when you're tired, support when it's late, and tools that flex when you can't.",
   date: "February 2025"
 }, {
   id: 5,
-  author: "Jennifer Lee",
+  author: "Jennifer, 25, Engineering Graduate",
   rating: 5,
-  text: "I've recommended this medical aid to all my colleagues. Their preventative care benefits are unmatched in the industry.",
+  text: "It's not about luxury. It's about being able to cover what you need - when you need it. One solution that includes medical cover, credit support, and built-in lifestyle rewards.",
   date: "March 2025"
 }];
 const ReviewsCarousel = () => {
@@ -60,7 +60,7 @@ const ReviewsCarousel = () => {
     <div className="py-16 md:py-20 lg:py-24 bg-medical-background">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
-          What Our Members Say
+          "I did this with support."
         </h2>
         
         <Carousel setApi={setApi} className="w-full max-w-4xl mx-auto">

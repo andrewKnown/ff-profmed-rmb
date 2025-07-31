@@ -91,7 +91,7 @@ export default function ApplicationForm() {
 
       toast({
         title: "Application Submitted",
-        description: "Thank you for your application. We'll be in touch soon!",
+        description: "Welcome to the professionals who are already backed. We'll be in touch soon!",
       });
     } catch (error) {
       setSubmitStatus('idle');
@@ -106,9 +106,9 @@ export default function ApplicationForm() {
   return (
     <Card className="w-full max-w-2xl mx-auto bg-background">
       <CardHeader>
-        <CardTitle className="text-2xl text-center">Apply for Profmed + RMB</CardTitle>
+        <CardTitle className="text-2xl text-center">Start something smart. Start it backed.</CardTitle>
         <CardDescription className="text-center">
-          Complete this form to apply for the dual benefit solution designed for young professionals
+          Join professionals who are building bold futures with one solution that supports all of it.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -379,7 +379,7 @@ export default function ApplicationForm() {
               size="lg"
               disabled={submitStatus !== 'idle'}
             >
-              {submitStatus === 'idle' && "Submit Application"}
+              {submitStatus === 'idle' && "Apply Today"}
               {submitStatus === 'submitting' && (
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin" />
