@@ -10,7 +10,7 @@ const TrustSection = () => {
     }
   };
   return <div className="py-16 md:py-20 lg:py-24 bg-medical-background">
-      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">
           Join the professionals who are already backed
         </h2>
