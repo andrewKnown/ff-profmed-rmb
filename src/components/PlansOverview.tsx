@@ -172,7 +172,6 @@ const PlansOverview = () => {
             className="text-lg px-8 py-6 bg-secondary hover:bg-secondary/90 shadow-lg"
           >
             {content.cta}
-            <MessageSquare className="ml-2" />
           </Button>
         </div>
       </div>
