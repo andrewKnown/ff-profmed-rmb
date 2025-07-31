@@ -37,8 +37,8 @@ const TrustSection = () => {
           <p className="mb-6 max-w-2xl mx-auto">Let's back it properly. Start your application today.</p>
           
           <div className="flex justify-center">
-            <Button onClick={scrollToChatbot} size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium py-6 px-8">
-              Start Text Chat <MessageSquare className="ml-2" />
+            <Button onClick={() => document.getElementById('application-form')?.scrollIntoView({ behavior: 'smooth' })} size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium py-6 px-8">
+              Apply Now <MessageSquare className="ml-2" />
             </Button>
           </div>
         </div>
